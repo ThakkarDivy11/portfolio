@@ -47,11 +47,11 @@ const Navbar = () => {
           <img src={logo} alt="DT" style={{ height: "50px", width: "50px" }} />
         </a>
         <a
-          href="mailto:Divythakkar318@gmail.com"
+          href="mailto:divythakkar318@gmail.com"
           className="navbar-connect"
           data-cursor="disable"
         >
-          Divythakkar318@gmail.com
+          divythakkar318@gmail.com
         </a>
         <ul>
           <li>
