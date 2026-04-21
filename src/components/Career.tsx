@@ -12,20 +12,7 @@ const Career = () => {
           <div className="career-timeline">
             <div className="career-dot"></div>
           </div>
-          <div className="career-info-box">
-            <div className="career-info-in">
-              <div className="career-role">
-                <h4>Position In Company</h4>
-                <h5>Company Name</h5>
-              </div>
-              <h3>20XX</h3>
-            </div>
-            <p>
-              Lorem ipsum dolor sit amet consectetur adipisicing elit. Enim
-              labore sit non ipsum temporibus quidem, deserunt eaque officiis
-              mollitia ratione suscipit repellat.
-            </p>
-          </div>
+
           <div className="career-info-box">
             <div className="career-info-in">
               <div className="career-role">
@@ -43,15 +30,13 @@ const Career = () => {
           <div className="career-info-box">
             <div className="career-info-in">
               <div className="career-role">
-                <h4>Position In Company</h4>
-                <h5>Company Name</h5>
+                <h4>WordPress Developer (AI+WP Integration)</h4>
+                <h5>Neweb AI</h5>
               </div>
-              <h3>NOW</h3>
+              <h3 style={{ fontSize: "28px" }}>Dec 2025 - Present</h3>
             </div>
             <p>
-              Lorem ipsum dolor sit amet consectetur adipisicing elit. Enim
-              labore sit non ipsum temporibus quidem, deserunt eaque officiis
-              mollitia ratione suscipit repellat.
+              Developing web solutions using WordPress with AI integration to build smarter and more dynamic websites. Continuously learning and applying skills in AI and the MERN stack while collaborating with teams to deliver modern, scalable web features.
             </p>
           </div>
         </div>
