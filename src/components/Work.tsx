@@ -13,42 +13,49 @@ const projects = [
     category: "Django",
     desc: "Developed a web-based application to manage tasks, team assignments, and project deadlines with intuitive UI and progress tracking.",
     tools: "Django, Python, Database",
+    image: "/images/Project-management.webp",
   },
   {
     title: "Result Management System",
     category: "Laravel",
     desc: "Built a digital platform for managing student results with secure data entry, grade calculation, and report generation.",
     tools: "Laravel, PHP, MySQL",
+    image: "/images/result-management.webp",
   },
   {
     title: "Speech to Text Application",
     category: "AI / Voice",
     desc: "Created a voice-to-text app using speech recognition APIs for real-time transcription with optimized performance.",
     tools: "Speech API, JavaScript",
+    image: "/images/voice-assistant.webp",
   },
   {
     title: "Payroll Management System",
     category: "Backend System",
     desc: "Automated salary calculation, deductions, and reporting with employee records and attendance tracking.",
     tools: "Database, Backend Logic",
+    image: "/images/images.webp",
   },
   {
     title: "CRM System",
     category: "MERN Stack",
     desc: "Developed a full-stack CRM system for managing clients, automating leads, and supporting sales workflows.",
     tools: "MongoDB, Express, React, Node",
+    image: "/images/download.webp",
   },
   {
     title: "CabZee",
     category: "Full Stack",
     desc: "Built a cab booking platform with real-time tracking, ride management, and user-friendly interface.",
     tools: "React, Node.js, Socket.io",
+    image: "/images/cabzee.png",
   },
   {
     title: "AI Collection Engine",
     category: "AI / Automation",
     desc: "Developed an AI-powered system for automating data collection, processing, and intelligent insights.",
     tools: "AI APIs, Automation",
+    image: "/images/ai.png",
   },
 ];
 
@@ -111,10 +118,7 @@ const Work = () => {
                 <p style={{ opacity: 0.7 }}>{project.desc}</p>
               </div>
 
-              <WorkImage
-                image="/images/placeholder.webp"
-                alt={project.title}
-              />
+              <WorkImage image={project.image} alt={project.title} />
             </div>
           ))}
         </div>
