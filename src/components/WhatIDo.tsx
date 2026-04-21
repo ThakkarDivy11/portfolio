@@ -1,29 +1,65 @@
 import { useEffect, useRef } from "react";
 import "./styles/WhatIDo.css";
-import { ScrollTrigger } from "gsap/ScrollTrigger";
+import { gsap } from "gsap-trial";
+import { ScrollTrigger } from "gsap-trial/ScrollTrigger";
+
+gsap.registerPlugin(ScrollTrigger);
 
 const WhatIDo = () => {
   const containerRef = useRef<(HTMLDivElement | null)[]>([]);
+
   const setRef = (el: HTMLDivElement | null, index: number) => {
     containerRef.current[index] = el;
   };
+
   useEffect(() => {
+    const elements = containerRef.current;
+
+    // 👉 MOBILE FIX (click toggle properly)
+    const clickHandlers: ((e: Event) => void)[] = [];
+
     if (ScrollTrigger.isTouch) {
-      containerRef.current.forEach((container) => {
-        if (container) {
-          container.classList.remove("what-noTouch");
-          container.addEventListener("click", () => handleClick(container));
-        }
+      elements.forEach((container) => {
+        if (!container) return;
+
+        container.classList.remove("what-noTouch");
+
+        const handler = () => handleClick(container);
+        clickHandlers.push(handler);
+
+        container.addEventListener("click", handler);
       });
     }
+
+    // 👉 DESKTOP ANIMATION (gsap-trial)
+    elements.forEach((el) => {
+      if (!el) return;
+
+      gsap.fromTo(
+        el,
+        { opacity: 0, y: 80 },
+        {
+          opacity: 1,
+          y: 0,
+          duration: 1,
+          ease: "power3.out",
+          scrollTrigger: {
+            trigger: el,
+            start: "top 85%",
+          },
+        }
+      );
+    });
+
     return () => {
-      containerRef.current.forEach((container) => {
-        if (container) {
-          container.removeEventListener("click", () => handleClick(container));
+      elements.forEach((container, i) => {
+        if (container && clickHandlers[i]) {
+          container.removeEventListener("click", clickHandlers[i]);
         }
       });
     };
   }, []);
+
   return (
     <div className="whatIDO">
       <div className="what-box">
@@ -34,120 +70,63 @@ const WhatIDo = () => {
           </div>
         </h2>
       </div>
+
       <div className="what-box">
         <div className="what-box-in">
-          <div className="what-border2">
-            <svg width="100%">
-              <line
-                x1="0"
-                y1="0"
-                x2="0"
-                y2="100%"
-                stroke="white"
-                strokeWidth="2"
-                strokeDasharray="7,7"
-              />
-              <line
-                x1="100%"
-                y1="0"
-                x2="100%"
-                y2="100%"
-                stroke="white"
-                strokeWidth="2"
-                strokeDasharray="7,7"
-              />
-            </svg>
-          </div>
+
+          {/* 🔥 CARD 1 */}
           <div
             className="what-content what-noTouch"
             ref={(el) => setRef(el, 0)}
           >
-            <div className="what-border1">
-              <svg height="100%">
-                <line
-                  x1="0"
-                  y1="0"
-                  x2="100%"
-                  y2="0"
-                  stroke="white"
-                  strokeWidth="2"
-                  strokeDasharray="6,6"
-                />
-                <line
-                  x1="0"
-                  y1="100%"
-                  x2="100%"
-                  y2="100%"
-                  stroke="white"
-                  strokeWidth="2"
-                  strokeDasharray="6,6"
-                />
-              </svg>
-            </div>
-            <div className="what-corner"></div>
-
             <div className="what-content-in">
-              <h3>DEVELOP</h3>
+              <h3>FULL STACK DEVELOPMENT</h3>
+
               <h4>Description</h4>
               <p>
-                Lorem ipsum dolor sit amet consectetur adipisicing elit. Quas
-                quia aliquid laboriosam ducimus sit molestiae.
+                I build scalable full-stack applications using MERN, Django, and Laravel.
+                Focus on performance, clean UI, and real-world problem solving.
               </p>
-              <h5>Skillset & tools</h5>
+
+              <h5>Skillset & Tools</h5>
               <div className="what-content-flex">
-                <div className="what-tags">JavaScript</div>
-                <div className="what-tags">TypeScript</div>
-                <div className="what-tags">Three.js</div>
                 <div className="what-tags">React</div>
-                <div className="what-tags">Css</div>
                 <div className="what-tags">Node.js</div>
-                <div className="what-tags">Next.js</div>
-                <div className="what-tags">Express.js</div>
-                <div className="what-tags">PHP</div>
-                <div className="what-tags">MySql</div>
+                <div className="what-tags">MongoDB</div>
+                <div className="what-tags">Express</div>
+                <div className="what-tags">Django</div>
+                <div className="what-tags">Laravel</div>
+                <div className="what-tags">MySQL</div>
               </div>
-              <div className="what-arrow"></div>
             </div>
           </div>
+
+          {/* 🔥 CARD 2 */}
           <div
             className="what-content what-noTouch"
             ref={(el) => setRef(el, 1)}
           >
-            <div className="what-border1">
-              <svg height="100%">
-                <line
-                  x1="0"
-                  y1="100%"
-                  x2="100%"
-                  y2="100%"
-                  stroke="white"
-                  strokeWidth="2"
-                  strokeDasharray="6,6"
-                />
-              </svg>
-            </div>
-            <div className="what-corner"></div>
             <div className="what-content-in">
-              <h3>DESIGN</h3>
+              <h3>UI / UX & INTERACTIVE DESIGN</h3>
+
               <h4>Description</h4>
               <p>
-                Lorem ipsum dolor sit amet consectetur adipisicing elit. Quas
-                quia aliquid laboriosam ducimus sit molestiae
+                I design modern, clean and animated UI with focus on user experience,
+                smooth interactions, and responsive layouts.
               </p>
-              <h5>Skillset & tools</h5>
+
+              <h5>Skillset & Tools</h5>
               <div className="what-content-flex">
-                <div className="what-tags">Blender</div>
-                <div className="what-tags">Zbrush</div>
-                <div className="what-tags">UI Design</div>
-                <div className="what-tags">Motion</div>
-                <div className="what-tags">Rigging</div>
-                <div className="what-tags">3D Animation</div>
-                <div className="what-tags">Character Design</div>
-                <div className="what-tags">Modelling</div>
+                <div className="what-tags">Figma</div>
+                <div className="what-tags">gsap-trial</div>
+                <div className="what-tags">Three.js</div>
+                <div className="what-tags">Framer Motion</div>
+                <div className="what-tags">CSS</div>
+                <div className="what-tags">Tailwind</div>
               </div>
-              <div className="what-arrow"></div>
             </div>
           </div>
+
         </div>
       </div>
     </div>
@@ -156,17 +135,20 @@ const WhatIDo = () => {
 
 export default WhatIDo;
 
+// 👉 FIXED CLICK FUNCTION
 function handleClick(container: HTMLDivElement) {
   container.classList.toggle("what-content-active");
-  container.classList.remove("what-sibling");
-  if (container.parentElement) {
-    const siblings = Array.from(container.parentElement.children);
 
-    siblings.forEach((sibling) => {
-      if (sibling !== container) {
-        sibling.classList.remove("what-content-active");
-        sibling.classList.toggle("what-sibling");
-      }
-    });
-  }
+  if (!container.parentElement) return;
+
+  const siblings = Array.from(container.parentElement.children);
+
+  siblings.forEach((sib) => {
+    if (sib !== container) {
+      sib.classList.remove("what-content-active");
+      sib.classList.add("what-sibling");
+    } else {
+      sib.classList.remove("what-sibling");
+    }
+  });
 }

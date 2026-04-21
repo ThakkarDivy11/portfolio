@@ -25,17 +25,17 @@ Build your own version — don’t just copy.
 
 ## 🛠️ Instructions
 
-I have modified the GSAP Club plugins using trial versions.  
+I have modified the gsap-trial Club plugins using trial versions.  
 ⚠️ Note: Trial plugins cannot be used for production or hosting.
 
-For official GSAP Club plugins, refer here:  
-https://gsap.com/docs/v3/Installation/
+For official gsap-trial Club plugins, refer here:  
+https://gsap-trial.com/docs/v3/Installation/
 
 ---
 
 ## ⚙️ Tech Stack
 
-React • TypeScript • GSAP • Three.js • WebGL • HTML • CSS • JavaScript
+React • TypeScript • gsap-trial • Three.js • WebGL • HTML • CSS • JavaScript
 
 ---
 
